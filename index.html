@@ -3,14 +3,973 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Henke</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>David Henke · Computational Biologist</title>
+  <meta name="description" content="David Henke — Computational biologist at Baylor College of Medicine. Creator of BioPrimeLASSO. Biomarker discovery, precision oncology, machine learning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & TOKENS ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #080e1e;
+      --navy2:   #0d1627;
+      --navy3:   #131f38;
+      --slate:   #1e2d4a;
+      --amber:   #f59e0b;
+      --amber2:  #fbbf24;
+      --teal:    #14b8a6;
+      --smoke:   #94a3b8;
+      --fog:     #cbd5e1;
+      --white:   #f1f5f9;
+      --serif:   'DM Serif Display', Georgia, serif;
+      --body:    'Source Serif 4', Georgia, serif;
+      --mono:    'JetBrains Mono', monospace;
+      --radius:  4px;
+      --gutter:  clamp(1.5rem, 5vw, 6rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--fog);
+      font-family: var(--body);
+      font-size: clamp(1rem, 1.1vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--amber); color: var(--navy); }
+
+    /* ─── SCROLLBAR ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--slate); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+    /* ─── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem var(--gutter);
+      background: rgba(8,14,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,158,11,0.12);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--smoke);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem var(--gutter) 5rem;
+      overflow: hidden;
+    }
+
+    #network-canvas {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+    }
+
+    /* grid overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* bottom fade */
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(transparent, var(--navy));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--amber);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.2s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      color: var(--smoke);
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.6s forwards;
+    }
+
+    .hero-affil {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--teal);
+      letter-spacing: 0.05em;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.7s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.9s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+      font-weight: 500;
+      border: 2px solid var(--amber);
+    }
+
+    .btn-primary:hover {
+      background: var(--amber2);
+      border-color: var(--amber2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,158,11,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--fog);
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    /* ─── SECTION SHARED ───────────────────────────────────── */
+    section {
+      padding: 6rem var(--gutter);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--amber);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── ABOUT ────────────────────────────────────────────── */
+    #about {
+      background: var(--navy2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      margin-bottom: 1.4rem;
+      color: var(--fog);
+      font-weight: 300;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-text strong { color: var(--white); font-weight: 600; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--navy3);
+      border: 1px solid rgba(245,158,11,0.12);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(245,158,11,0.4);
+      transform: translateY(-3px);
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--smoke);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── FEATURED PROJECT ─────────────────────────────────── */
+    #project {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #project::before {
+      content: 'BioPrimeLASSO';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: var(--serif);
+      font-size: 8rem;
+      color: rgba(245,158,11,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+    }
+
+    .project-card {
+      max-width: 1100px;
+      background: var(--navy3);
+      border: 1px solid rgba(245,158,11,0.18);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, var(--slate) 0%, var(--navy3) 100%);
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid rgba(245,158,11,0.12);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-subtitle {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+    }
+
+    .project-badges {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .badge:hover { opacity: 0.8; transform: translateY(-1px); }
+
+    .badge-doi   { background: #b31b1b22; color: #ff6b6b; border: 1px solid #b31b1b55; }
+    .badge-stars { background: #f59e0b22; color: var(--amber); border: 1px solid #f59e0b55; }
+    .badge-gpl   { background: #276dc322; color: #60a5fa; border: 1px solid #276dc355; }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .project-prose {
+      padding: 2.5rem 3rem;
+      border-right: 1px solid rgba(245,158,11,0.08);
+    }
+
+    .project-prose p {
+      color: var(--fog);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .project-prose blockquote {
+      border-left: 3px solid var(--amber);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      background: rgba(245,158,11,0.05);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--smoke);
+      font-size: 0.95rem;
+    }
+
+    .project-code {
+      padding: 2.5rem 2.5rem 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .code-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--smoke);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    pre {
+      background: var(--navy);
+      border: 1px solid rgba(245,158,11,0.1);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: var(--fog);
+      overflow-x: auto;
+    }
+
+    .r-comment  { color: #64748b; }
+    .r-fn       { color: var(--teal); }
+    .r-string   { color: #86efac; }
+    .r-num      { color: var(--amber2); }
+    .r-kw       { color: #c084fc; }
+
+    .paper-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--fog);
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+
+    .paper-link:hover {
+      background: rgba(245,158,11,0.12);
+      border-color: var(--amber);
+      color: var(--white);
+    }
+
+    .paper-link-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .paper-link-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--smoke); margin-top: 0.2rem; }
+
+    /* ─── RESEARCH ─────────────────────────────────────────── */
+    #research {
+      background: var(--navy2);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .research-card {
+      background: var(--navy3);
+      border: 1px solid rgba(148,163,184,0.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--amber);
+      transition: height 0.3s;
+    }
+
+    .research-card:hover::before { height: 100%; }
+
+    .research-card:hover {
+      border-color: rgba(245,158,11,0.2);
+      transform: translateX(4px);
+    }
+
+    .research-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .research-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .research-desc {
+      font-size: 0.9rem;
+      color: var(--smoke);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* ─── CONNECT ──────────────────────────────────────────── */
+    #connect {
+      background: var(--navy);
+      text-align: center;
+    }
+
+    .connect-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .connect-inner .section-label,
+    .connect-inner .section-title { text-align: center; }
+
+    .connect-inner .divider { margin: 0 auto 2rem; }
+
+    .connect-inner p {
+      color: var(--smoke);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--fog);
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: var(--radius);
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(245,158,11,0.15);
+    }
+
+    .social-link svg {
+      width: 18px; height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--navy2);
+      border-top: 1px solid rgba(245,158,11,0.08);
+      padding: 2rem var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-quote {
+      font-style: italic;
+      color: var(--smoke);
+      font-size: 0.9rem;
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: #475569;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── ANIMATIONS ───────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .about-grid   { grid-template-columns: 1fr; gap: 3rem; }
+      .project-body { grid-template-columns: 1fr; }
+      .project-prose { border-right: none; border-bottom: 1px solid rgba(245,158,11,0.08); }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to David Henke's Website</h1>
-    <p>This is a simple website hosted using GitHub Pages.</p>
-    <p>You can contact me at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
-  </div>
+
+  <!-- ── NAV ──────────────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">dmhenke</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#project">Research</a></li>
+      <li><a href="#research">Interests</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section id="hero">
+    <canvas id="network-canvas"></canvas>
+    <div class="hero-content">
+      <p class="hero-eyebrow">// computational biology · precision oncology</p>
+      <h1 class="hero-name">David<br /><em>Henke</em></h1>
+      <p class="hero-tagline">Converting fuzzy numbers into fuzzy insights — by teaching models what biology already knows.</p>
+      <p class="hero-affil">Molecular Virology &amp; Microbiology · Baylor College of Medicine · Houston, TX</p>
+      <div class="hero-cta">
+        <a href="#project" class="btn btn-primary">↓ Featured Work</a>
+        <a href="https://github.com/dmhenke" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" width="16" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.93c.57.1.78-.25.78-.55v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.95 10.95 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.nature.com/articles/s41698-025-00825-9" target="_blank" rel="noopener" class="btn btn-ghost">↗ Publication</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about">
+    <p class="section-label reveal">// who I am</p>
+    <h2 class="section-title reveal">Biologist who codes.<br /><em style="font-style:italic;color:var(--amber)">Statistician who reads papers.</em></h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I am a computational biologist at <strong>Baylor College of Medicine</strong>, where my work sits at the intersection of statistical machine learning, network biology, and functional genomics.
+        </p>
+        <p>
+          High-dimensional biological data is noisy, collinear, and humbling. Standard approaches will happily select a feature simply because it lives next to the real driver. My central research question is whether we can teach models what biology already knows — and use that knowledge to find signals that statistics alone would miss.
+        </p>
+        <p>
+          Practically, this means building regularized regression frameworks that incorporate <strong>protein–protein interaction networks</strong>, applying them to large-scale cancer dependency screens from <strong>DepMap</strong>, and translating the results toward therapeutic hypotheses in precision oncology.
+        </p>
+        <p>
+          My primary tool is <strong>R</strong>. My primary motivation is the gap between a statistically significant finding and a biologically meaningful one.
+        </p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-card reveal">
+            <div class="stat-number">2025</div>
+            <div class="stat-label">npj Precision Oncology</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">453</div>
+            <div class="stat-label">Cancer targets analyzed</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">1,048</div>
+            <div class="stat-label">Cell lines (DepMap)</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">Φ</div>
+            <div class="stat-label">Bio-priming parameter</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURED PROJECT ──────────────────────────────────── -->
+  <section id="project">
+    <p class="section-label reveal">// featured project</p>
+    <h2 class="section-title reveal">BioPrimeLASSO</h2>
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div>
+          <div class="project-title">BioPrimeLASSO</div>
+          <div class="project-subtitle">Bio-Primed LASSO · Biomarker Discovery · R Package</div>
+        </div>
+        <div class="project-badges">
+          <a class="badge badge-doi" href="https://www.nature.com/articles/s41698-025-00825-9" target="_blank" rel="noopener">
+            📄 DOI 10.1038/s41698-025-00825-9
+          </a>
+          <a class="badge badge-stars" href="https://github.com/dmhenke/BioPrimeLASSO/stargazers" target="_blank" rel="noopener">
+            ★ GitHub
+          </a>
+          <a class="badge badge-gpl" href="https://github.com/dmhenke/BioPrimeLASSO/blob/main/LICENSE" target="_blank" rel="noopener">
+            GPL-3.0
+          </a>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-prose">
+          <p>
+            Standard LASSO is statistically elegant but biologically blind. In collinear omics data — such as copy number profiles subject to linkage disequilibrium — it will select a gene simply because it lives next door to the real driver.
+          </p>
+          <p>
+            <strong>BioPrimeLASSO</strong> solves this by incorporating protein–protein interaction (PPI) network scores from STRING DB directly into the LASSO regularization penalty. A tunable parameter Φ, optimized by cross-validation, controls how strongly biological prior knowledge steers feature selection.
+          </p>
+          <blockquote>
+            Applied to DepMap dependency data, the method recovered <em>GAB2</em> as an <em>EGFR</em> dependency biomarker — a finding missed by standard approaches and the DepMap Predictability portal — and linked it to clinical sensitivity to EGFR inhibitors.
+          </blockquote>
+          <a class="paper-link" href="https://www.nature.com/articles/s41698-025-00825-9" target="_blank" rel="noopener">
+            <span class="paper-link-icon">📑</span>
+            <div>
+              <div>Henke et al. (2025) · <em>npj Precision Oncology</em>, 9, 39</div>
+              <div class="paper-link-meta">Bio-primed machine learning to enhance discovery of relevant biomarkers →</div>
+            </div>
+          </a>
+        </div>
+        <div class="project-code">
+          <div>
+            <div class="code-label">Installation</div>
+            <pre><span class="r-comment"># requires devtools</span>
+<span class="r-fn">install.packages</span>(<span class="r-string">"devtools"</span>)
+devtools::<span class="r-fn">install_github</span>(
+  <span class="r-string">"dmhenke/BioPrimeLASSO"</span>
+)</pre>
+          </div>
+          <div>
+            <div class="code-label">Core usage</div>
+            <pre><span class="r-comment"># Compute PPI scores for gene of interest</span>
+scores  &lt;- <span class="r-fn">get_scores</span>(
+  gene    = <span class="r-string">"EGFR"</span>,
+  network = ppi
+)
+
+<span class="r-comment"># Run bio-primed LASSO</span>
+results &lt;- <span class="r-fn">bplasso</span>(
+  <span class="r-fn">scale</span>(X), y, scores,
+  n_folds   = <span class="r-num">10</span>,
+  phi_range = <span class="r-fn">seq</span>(<span class="r-num">0</span>, <span class="r-num">1</span>, length = <span class="r-num">30</span>)
+)</pre>
+          </div>
+          <a class="btn btn-primary" href="https://github.com/dmhenke/BioPrimeLASSO" target="_blank" rel="noopener" style="justify-content:center;">
+            View on GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESEARCH INTERESTS ────────────────────────────────── -->
+  <section id="research">
+    <p class="section-label reveal">// research interests</p>
+    <h2 class="section-title reveal">What I think about</h2>
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <div class="research-icon">⚖️</div>
+        <div class="research-title">Regularized Regression</div>
+        <p class="research-desc">Biologically-informed LASSO, adaptive penalties, and penalty weighting with network priors. Extending classical shrinkage estimators with domain knowledge.</p>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-icon">🧫</div>
+        <div class="research-title">Functional Genomics</div>
+        <p class="research-desc">DepMap CRISPR and RNAi dependency screens, DEMETER2, and Chronos. Mapping which genes cancer cells cannot live without.</p>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-icon">🕸️</div>
+        <div class="research-title">Network Biology</div>
+        <p class="research-desc">PPI network integration via STRING DB, co-dependency analysis, and synthetic lethality. Treating interaction graphs as prior knowledge, not decoration.</p>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-icon">🎯</div>
+        <div class="research-title">Precision Oncology</div>
+        <p class="research-desc">Biomarker discovery from copy number variation, gene dependency, and drug sensitivity data. Bridging the gap between statistical rigor and clinical relevance.</p>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-icon">📐</div>
+        <div class="research-title">High-Dimensional Statistics</div>
+        <p class="research-desc">Feature selection in <em>p</em> ≫ <em>n</em> regimes, collinearity in omics data, and reproducible analysis pipelines. Making statistics behave when the data does not.</p>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-icon">🔬</div>
+        <div class="research-title">Translational Bioinformatics</div>
+        <p class="research-desc">Turning computational predictions into testable biological hypotheses. Finding biomarkers that are not just significant, but meaningful.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECT ───────────────────────────────────────────── -->
+  <section id="connect">
+    <div class="connect-inner reveal">
+      <p class="section-label">// get in touch</p>
+      <h2 class="section-title">Let's talk data</h2>
+      <div class="divider"></div>
+      <p>
+        I am interested in collaborations involving biologically-informed machine learning, cancer functional genomics, and novel regularization approaches for high-dimensional biological data.
+      </p>
+      <div class="social-links">
+        <a class="social-link" href="https://github.com/dmhenke" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.93c.57.1.78-.25.78-.55v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.95 10.95 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="social-link" href="https://twitter.com/henke_tweets" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter / X
+        </a>
+        <a class="social-link" href="https://linkedin.com/in/henkedavid" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="social-link" href="https://github.com/dmhenke/BioPrimeLASSO" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+          BioPrimeLASSO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-quote">"Learn to appreciate the mountain on which you're already standing."</span>
+    <span class="footer-copy">© 2025 David Henke · dmhenke.github.io</span>
+  </footer>
+
+  <!-- ── SCRIPTS ───────────────────────────────────────────── -->
+  <script>
+    /* ── PPI Network Canvas Animation ── */
+    const canvas = document.getElementById('network-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes, animFrame;
+
+    const AMBER = 'rgba(245,158,11,';
+    const TEAL  = 'rgba(20,184,166,';
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function makeNodes(n) {
+      return Array.from({ length: n }, () => ({
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r:  Math.random() * 2.5 + 1,
+        hub: Math.random() < 0.15,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      /* edges */
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < 140) {
+            const alpha = (1 - d / 140) * 0.55;
+            const color = (nodes[i].hub || nodes[j].hub) ? AMBER : TEAL;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = color + alpha + ')';
+            ctx.lineWidth   = nodes[i].hub || nodes[j].hub ? 1.2 : 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      /* nodes */
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.hub ? n.r * 2.5 : n.r, 0, Math.PI * 2);
+        ctx.fillStyle = n.hub
+          ? AMBER + '0.9)'
+          : TEAL  + '0.65)';
+        ctx.fill();
+        if (n.hub) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
+          ctx.strokeStyle = AMBER + '0.2)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      });
+
+      /* update */
+      nodes.forEach(n => {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+      });
+
+      animFrame = requestAnimationFrame(draw);
+    }
+
+    function init() {
+      resize();
+      nodes = makeNodes(70);
+      if (animFrame) cancelAnimationFrame(animFrame);
+      draw();
+    }
+
+    window.addEventListener('resize', () => { resize(); nodes = makeNodes(70); });
+    init();
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
