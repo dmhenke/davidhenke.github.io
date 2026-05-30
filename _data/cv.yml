@@ -78,7 +78,7 @@ cv:
       - institution: University of Colorado Boulder
         location: Boulder, CO
         url: https://www.colorado.edu
-        area: Biochemistry (Minor: Chemistry)
+        area: "Biochemistry (Minor: Chemistry)"
         studyType: Bachelor of Arts
         start_date: 2004
         end_date: 2008
