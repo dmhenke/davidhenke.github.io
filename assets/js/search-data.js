@@ -25,7 +25,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "A growing collection of your cool projects.",
+          description: "Open-source tools and deployments for LLMs, scientific literature, and biomarker discovery.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/davidhenke.github.io/projects/";
@@ -475,36 +475,6 @@ ninja.data = [{
           description: "Deploy and run LLMs in Google Colab — GPU-accelerated, no local setup required",
           section: "Projects",handler: () => {
               window.location.href = "/davidhenke.github.io/projects/3_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/4_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/5_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/6_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/7_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/8_project/";
-            },},{id: "projects-placeholder",
-          title: 'placeholder',
-          description: "placeholder",
-          section: "Projects",handler: () => {
-              window.location.href = "/davidhenke.github.io/projects/9_project/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
