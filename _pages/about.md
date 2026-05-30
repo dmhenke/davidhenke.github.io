@@ -36,3 +36,12 @@ High-dimensional biological data is noisy, collinear, and humbling. Standard app
 Practically, this means building regularized regression frameworks that incorporate protein–protein interaction networks, applying them to large-scale cancer dependency screens from [DepMap](https://depmap.org/portal/), and translating the results toward therapeutic hypotheses in precision oncology.
 
 My primary tool is R. My primary motivation is the gap between a statistically significant finding and a biologically meaningful one.
+
+## Research Interests
+
+- **Regularized Regression** — Biologically-informed LASSO, adaptive penalties, and penalty weighting with network priors
+- **Functional Genomics** — DepMap CRISPR and RNAi dependency screens, DEMETER2, and Chronos
+- **Network Biology** — PPI network integration via STRING DB, co-dependency analysis, and synthetic lethality
+- **Precision Oncology** — Biomarker discovery from copy number variation, gene dependency, and drug sensitivity data
+- **High-Dimensional Statistics** — Feature selection in p ≫ n regimes, collinearity in omics data, reproducible pipelines
+- **Translational Bioinformatics** — Turning computational predictions into testable biological hypotheses
