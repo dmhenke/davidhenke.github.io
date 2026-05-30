@@ -2,7 +2,7 @@
 layout: page
 title: Preprint Digest
 description: Automated daily digest of scientific preprints powered by LLMs
-img: assets/img/1.jpg
+img: assets/img/boat.jpg
 importance: 1
 category: work
 github: https://github.com/dmhenke/Preprint_Digest
