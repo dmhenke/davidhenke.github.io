@@ -6,7 +6,7 @@ img: assets/img/1.jpg
 importance: 1
 category: work
 github: https://github.com/dmhenke/Preprint_Digest
-redirect: https://github.com/dmhenke/Preprint_Digest
+redirect: https://dmhenke.github.io/Preprint_Digest/
 ---
 
 Preprint Digest is an automated pipeline that deploys a daily summary of newly published preprints from bioRxiv and medRxiv. It leverages large language models to curate and summarize the most relevant papers in computational biology and precision medicine.
