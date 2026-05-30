@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Open-source tools and deployments for LLMs, scientific literature, and biomarker discovery.
 nav: true
 nav_order: 3
 display_categories: [work, fun]
