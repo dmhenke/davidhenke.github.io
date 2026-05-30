@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-New paper in *Journal of Infection*: infant-derived nasal organoids reveal increased RSV susceptibility in early life.
+New paper in _Journal of Infection_: infant-derived nasal organoids reveal increased RSV susceptibility in early life.
