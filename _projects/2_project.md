@@ -4,7 +4,7 @@ title: Individual LLM Deployment
 description: Open-source LLMs configured for personal or institutional deployment
 img: assets/img/llm-local-deployment.svg
 importance: 2
-category: work
+category: fun
 github: https://github.com/dmhenke/Individual_Deployment_LLM
 redirect: https://dmhenke.github.io/Individual_Deployment_LLM/
 ---

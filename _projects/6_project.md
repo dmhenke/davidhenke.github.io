@@ -4,7 +4,7 @@ title: Multifunction Solar Utah
 description: Solar sited where it does more than one job — generation paired with water conservation, dust suppression, and ecosystem protection
 img: assets/img/multifunction-solar-utah.svg
 importance: 6
-category: work
+category: fun
 github: https://github.com/dmhenke/multifunction-solar-utah
 redirect: https://dmhenke.github.io/multifunction-solar-utah/
 ---

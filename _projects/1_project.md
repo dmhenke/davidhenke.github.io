@@ -4,7 +4,7 @@ title: Preprint Digest
 description: Automated daily digest of scientific preprints powered by LLMs
 img: assets/img/preprint-digest.svg
 importance: 1
-category: work
+category: fun
 github: https://github.com/dmhenke/Preprint_Digest
 redirect: https://dmhenke.github.io/Preprint_Digest/
 ---

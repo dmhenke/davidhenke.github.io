@@ -4,7 +4,7 @@ title: Drug2DiseaseDiscovery
 description: Single-cell foundation-model embeddings and signature reversal to nominate candidate therapeutics for lupus
 img: assets/img/drug2disease-discovery.svg
 importance: 7
-category: work
+category: fun
 github: https://github.com/dmhenke/Drug2DiseaseDiscovery
 redirect: https://dmhenke.github.io/Drug2DiseaseDiscovery/
 ---
