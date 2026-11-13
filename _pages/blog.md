@@ -2,7 +2,7 @@
 layout: default
 permalink: /blog/
 title: notes
-nav: true
+nav: false # hidden until the draft notes are published; tag links 404 with one public post
 nav_order: 6
 pagination:
   enabled: true

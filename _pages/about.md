@@ -2,17 +2,18 @@
 layout: about
 title: About
 permalink: / # homepage — this is what generates index.html at the site root
-description: David M. Henke — computational biologist at Baylor College of Medicine building network-informed machine learning for precision oncology.
+description: David M. Henke — computational biologist at Baylor College of Medicine working across viral genomics and precision oncology, with network-informed machine learning.
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # true, false
   more_info: >
+    <p>Senior Biostatistician</p>
     <p>Baylor College of Medicine · Houston, TX</p>
     <p>Based in Salt Lake City, UT</p>
 
 network_hero: true
-hero_eyebrow: "Computational Biology · Precision Oncology"
+hero_eyebrow: "Computational Biology · Viral Genomics · Precision Oncology"
 hero_tagline: "Network-informed machine learning that teaches models what biology already knows — from viral genomics to cancer dependency screens."
 
 news: true
@@ -28,15 +29,17 @@ latest_posts:
   enabled: false
 ---
 
-I am a computational biologist at **Baylor College of Medicine**, where my work sits at the intersection of statistical machine learning, network biology, and functional genomics. Across nearly two decades in biomedical research, I have led the data-driven arm of clinical and basic-science studies spanning viral genomics, precision oncology, and human genetics.
+I am a computational biologist at **Baylor College of Medicine**. My title there is Senior Biostatistician; the work itself is broader, sitting at the intersection of statistical machine learning, network biology, and functional genomics. Across nearly two decades in biomedical research, I have led the data-driven arm of clinical and basic-science studies spanning viral genomics, precision oncology, and human genetics.
 
 High-dimensional biological data is noisy, collinear, and humbling. Standard approaches will happily select a feature simply because it lives next to the real driver. My central research question is whether we can teach models what biology already knows — and use that knowledge to find signals that statistics alone would miss.
 
 In practice, this means building regularized regression frameworks that incorporate **protein–protein interaction networks**, applying them to large-scale cancer dependency screens from **DepMap**, and translating the results toward therapeutic hypotheses. My flagship project, **[BioPrimeLASSO](https://www.nature.com/articles/s41698-025-00825-9)** — published in _npj Precision Oncology_ (2025) — encodes STRING-DB network structure into the LASSO penalty, scaled it across 453 cancer targets and 1,048 cell lines, and recovered GAB2 as an EGFR dependency biomarker that conventional feature selection would have missed.
 
+The other half of my work is **viral genomics**. I lead the statistical and genomic analysis for studies of respiratory syncytial virus (RSV), SARS-CoV-2, and the wastewater virome, covering intra-host variation, evolutionary dynamics, and sequencing-based surveillance.
+
 My primary tool is **R**. My primary motivation is the gap between a statistically significant finding and a biologically meaningful one.
 
 <div class="featured-work" markdown="1">
 <span class="featured-work__label">Featured work</span>
-**BioPrimeLASSO** — *npj Precision Oncology* (2025). Network-priming recovered GAB2 as an EGFR dependency across 453 targets and 1,048 DepMap cell lines, a signal conventional feature selection missed. [Read the paper →](https://www.nature.com/articles/s41698-025-00825-9)
+**BioPrimeLASSO** — *npj Precision Oncology* (2025). Network-priming recovered GAB2 as an EGFR dependency across 453 targets and 1,048 DepMap cell lines, a signal conventional feature selection missed. [Read the paper →](https://www.nature.com/articles/s41698-025-00825-9) · [Project page →]({{ '/projects/8_project/' | relative_url }})
 </div>

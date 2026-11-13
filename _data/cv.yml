@@ -2,6 +2,7 @@ cv:
   name: David M. Henke
   headline: Computational Biologist
   location: Salt Lake City, UT
+  website: https://dmhenke.github.io/davidhenke.github.io/
 
   social_networks:
     - network: GitHub
@@ -131,6 +132,10 @@ cv:
       - name: LLM Google Colab Deployment
         summary: Ready-to-run notebooks for GPU-accelerated LLM inference in Google Colab.
         url: https://dmhenke.github.io/LLM_GColabDeployment/
+
+    Service:
+      - bullet: Peer reviewer, npj journals
+      - bullet: "Contributor, third international hackathon on large-scale genomic composition (F1000Research, 2022)"
 
     Certificates:
       - name: Innovation & Business Strategy
