@@ -98,6 +98,9 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Disable Jekyll on GitHub Pages 🚫
+        # _site is already built; without this file Pages runs Jekyll again and drops underscore-prefixed paths
+        run: touch _site/.nojekyll
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
