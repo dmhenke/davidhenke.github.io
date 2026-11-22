@@ -119,6 +119,11 @@ ninja.data = [{
           description: "Network-informed LASSO that encodes protein–protein interactions into the penalty to find biologically relevant biomarkers",
           section: "Projects",handler: () => {
               window.location.href = "/davidhenke.github.io/projects/8_project/";
+            },},{id: "projects-crypto-tracking",
+          title: 'Crypto Tracking',
+          description: "Bitcoin, Ethereum and Cardano against the spot crypto ETFs — premiums, fee drag and return statistics, updated daily",
+          section: "Projects",handler: () => {
+              window.location.href = "/davidhenke.github.io/projects/9_project/";
             },},{
         id: 'social-github',
         title: 'GitHub',
