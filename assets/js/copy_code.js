@@ -51,6 +51,7 @@ codeBlocks.forEach(function (codeBlock) {
     const parent = codeBlock.parentElement;
     parent.insertBefore(wrapper, codeBlock);
     wrapper.append(codeBlock);
+    codeBlock.tabIndex = 0; // horizontally scrollable, so it must be reachable by keyboard
     wrapper.append(copyButton);
   }
 });

@@ -6,8 +6,11 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: David
 middle_name: M.
 last_name: Henke
+contact_email: # stored reversed so the address never appears as user@domain in this repo or the built HTML
+  user_reversed: eknehmdivad
+  domain_reversed: moc.liamg
 contact_note: >
-  Best reached via LinkedIn or GitHub. Happy to discuss research, collaboration, or consulting.
+  Email is the quickest way to reach me. Happy to discuss research, collaboration, or consulting.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   David Henke — Computational biologist at Baylor College of Medicine. Viral genomics, precision oncology, biomarker discovery, machine learning.
 footer_text: # leave empty to show only the copyright line
@@ -52,7 +55,7 @@ external_services:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false # a fixed footer took a permanent strip of the mobile screen for one copyright line
 search_enabled: true
 socials_in_search: true
 posts_in_search: true

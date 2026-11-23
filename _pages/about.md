@@ -1,6 +1,7 @@
 ---
 layout: about
 title: About
+seo_title: David M. Henke · Computational Biologist # browser tab, search results and link previews
 permalink: / # homepage — this is what generates index.html at the site root
 description: David M. Henke — computational biologist at Baylor College of Medicine working across viral genomics and precision oncology, with network-informed machine learning.
 profile:

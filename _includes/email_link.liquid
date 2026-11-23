@@ -1,0 +1,21 @@
+{% comment %}
+  Email link assembled in the browser by assets/js/common.js. The address appears
+  in neither this repo nor the served HTML as user@domain, which defeats the
+  harvesters that regex-scan page source. Browser-rendering scrapers can still read it.
+  include.label: visible text (omit for an envelope icon); include.class: extra classes;
+  include.subject: optional subject line.
+{% endcomment %}
+<a
+  href="#"
+  class="js-email{% if include.class %} {{ include.class }}{% endif %}"
+  data-u="{{ site.contact_email.user_reversed }}"
+  data-d="{{ site.contact_email.domain_reversed }}"
+  {% if include.subject %}
+    data-subject="{{ include.subject }}"
+  {% endif %}
+  {% unless include.label %}
+    aria-label="Email"
+  {% endunless %}
+>
+  {%- if include.label -%}{{ include.label }}{%- else -%}<i class="fa-solid fa-envelope" aria-hidden="true"></i>{%- endif -%}
+</a>

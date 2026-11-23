@@ -43,6 +43,13 @@ article > h2,
   border-bottom: 1px solid var(--global-divider-color);
 }
 
+// CV section titles are h2 for heading order but keep the card look
+.post > article .card > h2.card-title {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
 code,
 pre,
 kbd,

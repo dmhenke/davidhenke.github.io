@@ -127,12 +127,21 @@ ul.task-list input[type="checkbox"] {
 .projects {
   a {
     text-decoration: none;
+  }
 
-    &:hover {
-      .card-title {
-        color: var(--global-theme-color);
-      }
-    }
+  .card-title a {
+    color: inherit;
+  }
+
+  .card:hover .card-title,
+  .card:focus-within .card-title {
+    color: var(--global-theme-color);
+  }
+
+  // Sits above the card's stretched link so the GitHub icon stays clickable
+  .card-secondary-link {
+    position: relative;
+    z-index: 2;
   }
 
   .card {

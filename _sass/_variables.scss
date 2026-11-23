@@ -15,9 +15,9 @@ $cyan-color: #2698ba !default;
 $light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
 
 // Clinical-teal accent (site identity color)
-$teal-color: #0d9488 !default; // primary accent, tuned for light mode
+$teal-color: #0f766e !default; // primary accent, tuned for light mode (5.5:1 on white, WCAG AA)
 $teal-color-bright: #2dd4bf !default; // brighter accent for dark mode
-$teal-color-deep: #0f766e !default; // deep teal for gradients / hover
+$teal-color-deep: #115e59 !default; // deep teal for gradients / hover
 $green-color: #00ab37 !default;
 $green-color-lime: #b7d12a !default;
 $green-color-dark: #009f06 !default;

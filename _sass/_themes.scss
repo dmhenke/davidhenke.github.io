@@ -9,7 +9,7 @@
   --global-bg-color: #{v.$white-color};
   --global-code-bg-color: #{v.$code-bg-color-light};
   --global-text-color: #{v.$black-color};
-  --global-text-color-light: #{v.$grey-color};
+  --global-text-color-light: #707070; // 5:1 on white; #828282 failed WCAG AA
   --global-theme-color: #{v.$teal-color};
   --global-hover-color: #{v.$teal-color-deep};
   --global-hover-text-color: #{v.$white-color};
@@ -79,7 +79,7 @@ html[data-theme="dark"] {
   --global-bg-color: #{v.$grey-color-dark};
   --global-code-bg-color: #{v.$code-bg-color-dark};
   --global-text-color: #{v.$grey-color-light};
-  --global-text-color-light: #{v.$grey-color};
+  --global-text-color-light: #949494; // 5.6:1 on the dark background
   --global-theme-color: #{v.$teal-color-bright};
   --global-hover-color: #{v.$teal-color-bright};
   --global-hover-text-color: #{v.$grey-color-dark};

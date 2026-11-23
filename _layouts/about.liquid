@@ -5,7 +5,7 @@ layout: default
   {% if page.network_hero %}
     {% include network_hero.liquid %}
   {% else %}
-    <header class="post-header">
+    <div class="post-header">
       <h1 class="post-title">
         {% if site.title == 'blank' %}
           <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
@@ -15,7 +15,7 @@ layout: default
         {% endif %}
       </h1>
       <p class="desc">{{ page.subtitle }}</p>
-    </header>
+    </div>
   {% endif %}
 
   <article>
@@ -71,7 +71,10 @@ layout: default
     <!-- Social -->
     {% if page.social %}
       <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
+        <div class="contact-icons">
+          {% include email_link.liquid %}
+          {% social_links %}
+        </div>
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>

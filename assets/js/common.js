@@ -58,3 +58,10 @@ $(document).ready(function () {
     trigger: "hover",
   });
 });
+
+// Assemble obfuscated email links (see _includes/email_link.liquid)
+document.querySelectorAll("a.js-email").forEach((link) => {
+  const reverse = (text) => text.split("").reverse().join("");
+  const subject = link.dataset.subject ? "?subject=" + encodeURIComponent(link.dataset.subject) : "";
+  link.href = "mailto:" + reverse(link.dataset.u) + "@" + reverse(link.dataset.d) + subject;
+});

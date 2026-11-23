@@ -17,4 +17,10 @@ I have worked as an independent statistical advisor since 2013, alongside my rol
 
 ## Get in touch
 
-Reach me on [LinkedIn](https://www.linkedin.com/in/henkedavid) or [GitHub](https://github.com/dmhenke) with a short description of the study and the decision the analysis needs to support.
+Email me a short description of the study and the decision the analysis needs to support.
+
+<div class="hero-network__cta">
+  {% include email_link.liquid label="Email me about a project" class="hero-network__cta--solid" subject="Consulting enquiry" %}
+</div>
+
+You can also reach me on [LinkedIn](https://www.linkedin.com/in/henkedavid).
