@@ -54,6 +54,7 @@ jobs:
           start_time=$(date)
           timeout 90 python bin/update_scholar_citations.py
           status=$?
+          echo "status=$status" >> $GITHUB_OUTPUT
           end_time=$(date)
           if [ $status -eq 0 ]; then
             echo "✅ Citation update succeeded (started at $start_time, ended at $end_time)."
@@ -102,3 +103,11 @@ jobs:
             git commit -m "Update Google Scholar citations"
             git push
           )
+
+      - name: Fail the run if the citation script failed
+        # The script step tolerates errors so the steps above still run; without this the
+        # run reported success while citations went stale from Sept to Nov 2026.
+        if: steps.run_citation_update.outputs.status != '0'
+        run: |
+          echo "❌ Citation update script exited with ${{ steps.run_citation_update.outputs.status }}; see the step log above."
+          exit 1
