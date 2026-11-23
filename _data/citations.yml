@@ -1,20 +1,20 @@
 metadata:
-  last_updated: '2026-09-04'
+  last_updated: '2026-11-23'
 papers:
   fCbxT2wAAAAJ:0EnyYjriUFMC:
-    citations: 46
+    citations: 47
     title: Proposal for human respiratory syncytial virus nomenclature below the species level
     year: '2021'
   fCbxT2wAAAAJ:2osOgNQ5qMEC:
-    citations: 42
+    citations: 44
     title: Oligonucleotide capture sequencing of the SARS-CoV-2 genome and subgenomic fragments from COVID-19 individuals
     year: '2021'
   fCbxT2wAAAAJ:4DMP91E08xMC:
-    citations: 148
+    citations: 170
     title: Wastewater sequencing reveals community and variant dynamics of the collective human virome
     year: '2023'
   fCbxT2wAAAAJ:4TOpqqG69KYC:
-    citations: 10
+    citations: 11
     title: Microbial fingerprints reveal interaction between museum objects, curators, and visitors
     year: '2023'
   fCbxT2wAAAAJ:5nxA0vEk-isC:
@@ -30,11 +30,11 @@ papers:
     title: Oligonucleotide Capture Sequencing of the SARS-CoV-2 Genome and Subgenomic Fragments from COVID-19 Individuals
     year: '2020'
   fCbxT2wAAAAJ:IWHjjKOFINEC:
-    citations: 16
+    citations: 19
     title: Bio-primed machine learning to enhance discovery of relevant biomarkers
     year: '2025'
   fCbxT2wAAAAJ:IjCSPb-OGe4C:
-    citations: 58
+    citations: 64
     title: Multiple respiratory syncytial virus (RSV) strains infecting HEp-2 and A549 cells reveal cell line-dependent differences in resistance to RSV infection
     year: '2022'
   fCbxT2wAAAAJ:L8Ckcad2t8MC:
@@ -62,7 +62,7 @@ papers:
     title: Evolutionary dynamics of Respiratory Syncytial Virus in pre-pandemic, pandemic, and post-pandemic periods in Houston, Texas, USA
     year: '2026'
   fCbxT2wAAAAJ:Se3iqnhoufwC:
-    citations: 154
+    citations: 162
     title: Sequence variability of the respiratory syncytial virus (RSV) fusion gene among contemporary and historical genotypes of RSV/A and RSV/B
     year: '2017'
   fCbxT2wAAAAJ:TFP_iSt0sucC:
@@ -70,7 +70,7 @@ papers:
     title: 'Article type: Original Article-Platelets'
     year: Unknown Year
   fCbxT2wAAAAJ:Tyk-4Ss8FVUC:
-    citations: 195
+    citations: 199
     title: Association of nasopharyngeal microbiota profiles with bronchiolitis severity in infants hospitalised for bronchiolitis
     year: '2016'
   fCbxT2wAAAAJ:UeHWp8X0CEIC:
@@ -86,7 +86,7 @@ papers:
     title: '900: A pilot validation study for cell-based noninvasive prenatal testing (NIPT) in 42 cases'
     year: '2019'
   fCbxT2wAAAAJ:WF5omc3nYNoC:
-    citations: 19
+    citations: 20
     title: "Adult memory T cell responses to the respiratory syncytial virus fusion protein during a single RSV season (2018\u20132019)"
     year: '2022'
   fCbxT2wAAAAJ:Y0pCki6q_DkC:
@@ -98,7 +98,7 @@ papers:
     title: The third international hackathon for applying insights into large-scale genomic composition to use cases in a wide range of organisms
     year: '2022'
   fCbxT2wAAAAJ:ZeXyd9-uunAC:
-    citations: 35
+    citations: 38
     title: Infant-derived human nasal organoids exhibit relatively increased susceptibility, epithelial responses, and cytotoxicity during RSV infection
     year: '2024'
   fCbxT2wAAAAJ:_FxGoFyzp5QC:
@@ -106,7 +106,7 @@ papers:
     title: 'Correction: Sequence variability of the respiratory syncytial virus (RSV) fusion gene among contemporary and historical genotypes of RSV/A and RSV/B'
     year: '2017'
   fCbxT2wAAAAJ:_Qo2XoVZTnwC:
-    citations: 31
+    citations: 32
     title: "\u201CNormal\u2010appearing\u201D scalp areas are also affected in lichen planopilaris and frontal fibrosing alopecia: An observational histopathologic study of 40 patients"
     year: '2020'
   fCbxT2wAAAAJ:aqlVkmm33-oC:
@@ -134,27 +134,27 @@ papers:
     title: "Reliable detection of subchromosomal deletions and duplications using cell\u2010based noninvasive prenatal testing"
     year: '2018'
   fCbxT2wAAAAJ:mVmsd5A6BfQC:
-    citations: 3
+    citations: 4
     title: Pediatric human nose organoids demonstrate greater susceptibility, epithelial responses, and cytotoxicity than adults during RSV infection
     year: '2024'
   fCbxT2wAAAAJ:qjMakFHDy7sC:
-    citations: 71
+    citations: 73
     title: Combinatorial inhibition of PTPN12-regulated receptors leads to a broadly effective therapeutic strategy in triple-negative breast cancer
     year: '2018'
   fCbxT2wAAAAJ:r0BpntZqJG4C:
-    citations: 4
+    citations: 5
     title: "Strain-specific variability in viral kinetics, cytokine response, and cellular damage in air\u2013liquid cultures of human nasal organoids after infection with SARS-CoV-2"
     year: '2025'
   fCbxT2wAAAAJ:roLk4NBRz8UC:
-    citations: 79
+    citations: 80
     title: The association between anterior nares and nasopharyngeal microbiota in infants hospitalized for bronchiolitis
     year: '2018'
   fCbxT2wAAAAJ:u-x6o8ySG0sC:
-    citations: 200
+    citations: 202
     title: EMT cells increase breast cancer metastasis via paracrine GLI activation in neighbouring tumour cells
     year: '2017'
   fCbxT2wAAAAJ:u5HHmVD_uO8C:
-    citations: 31
+    citations: 33
     title: "The protease\u2010activated receptor 4 Ala120Thr variant alters platelet responsiveness to low\u2010dose thrombin and protease\u2010activated receptor 4 desensitization, and is blocked by non \u2026"
     year: '2018'
   fCbxT2wAAAAJ:ufrVoPGSRksC:
@@ -162,6 +162,6 @@ papers:
     title: Oligonucleotide capture sequencing of the SARS-CoV-2 genome and subgenomic fragments from COVID-19 individuals
     year: Unknown Year
   fCbxT2wAAAAJ:zYLM7Y9cAGgC:
-    citations: 14
+    citations: 15
     title: Design tools for MPRA experiments
     year: '2018'
